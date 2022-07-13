@@ -1,32 +1,35 @@
-# Prerequisites
-*.d
+#include<iostream>
+#include<vector>
+using namespace std;
 
-# Compiled Object files
-*.slo
-*.lo
-*.o
-*.obj
 
-# Precompiled Headers
-*.gch
-*.pch
-
-# Compiled Dynamic libraries
-*.so
-*.dylib
-*.dll
-
-# Fortran module files
-*.mod
-*.smod
-
-# Compiled Static libraries
-*.lai
-*.la
-*.a
-*.lib
-
-# Executables
-*.exe
-*.out
-*.app
+int main(){
+    int n;
+    cin >> n;
+    bool k = true;
+    int sum = 0;
+    int r = 1;
+    int l = 1;
+    while(sum<n){
+        sum+=r;
+        r++;
+    }
+    r--;
+    while(l<=n/2){
+        //cout<<l<<", "<<r<<", "<<sum<<'\n';
+        if(sum > n){
+            sum -= l;
+            l++;
+        }
+        else{
+            if(sum == n){
+                cout << l << "-" << r << '\n';
+                k=false;
+            }
+            sum += (++r);
+        }
+    }
+    if(k){
+        cout<<"none";
+    }
+}
